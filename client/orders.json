@@ -1,0 +1,31 @@
+{
+    "orders":[
+        {
+            "orderno": "1",
+            "orderduedate": "1-12-2019",
+            "customername":"aaa",
+            "customeraddress":"hyd",
+            "customerphone":"9008080808",
+            "ordertotal":"12"
+
+        },
+        {
+            "orderno": "2",
+            "orderduedate": "1-12-2019",
+            "customername":"aaa",
+            "customeraddress":"hyd",
+            "customerphone":"9008080808",
+            "ordertotal":"12"
+
+        },
+        {
+            "orderno": "3",
+            "orderduedate": "1-12-2019",
+            "customername":"aaa",
+            "customeraddress":"hyd",
+            "customerphone":"9008080808",
+            "ordertotal":"12"
+
+        }
+    ]
+}

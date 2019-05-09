@@ -1,0 +1,23 @@
+
+<a routerLink="/orders">+ Add Orders</a>
+<table>
+
+    <th>orderno</th>
+    <th>orderduedate</th>
+    <th>customername</th>
+    <th>customeraddress</th>
+    <th>customerphone</th>
+    <th>ordertotal</th>
+
+    <tr *ngFor = "let order of orders">
+
+      <td>{{order.orderno}}</td>
+      <td>{{order.orderduedate}}</td>
+    <td>{{order.customername}}</td>
+    <td>{{order.customeraddress}}</td>
+    <td>{{order.customerphone}}</td>
+    <td>{{order.ordertotal}}</td>
+    </tr>
+
+
+</table>

@@ -1,0 +1,20 @@
+<a routerLink="/home">Back</a>
+
+<h3>Add Orders</h3>
+<form id ="formNewOrder" name="formNewOrder" #orderData = "ngForm" (ngSubmit)="addNewOrder(orderData.value)">
+
+  <label>orderno</label>
+  <input type="text" name="orderno" ngModel><br>
+  <label>orderduedate</label>
+  <input type="text" name="orderduedate" ngModel><br>
+  <label>customername</label>
+  <input type="text" name="customername" ngModel><br>
+  <label>customeraddress</label>
+  <input type="text" name="customeraddress" ngModel><br>
+  <label>customerphone</label>
+  <input type="text" name="customerphone" ngModel><br>
+  <label>ordertotal</label>
+  <input type="text" name="ordertotal" ngModel><br>
+ <input type="submit" value="Add Order">
+
+</form>
