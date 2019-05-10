@@ -10,11 +10,12 @@ export class OrdersComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
    orderObj: object = [];
-
+  confirmationString: string = 'New Order has been Added';
+  isAdded: boolean = false;
 
 
    addNewOrder(order){
-     this.orderObj ={
+     this.orderObj = {
        "orderno": order.orderno,
        "orderduedate": order.orderduedate,
        "customername":order.customername,
@@ -24,7 +25,9 @@ export class OrdersComponent implements OnInit {
 
      }
      this.http.post('http://localhost:4300/orders', this.orderObj).subscribe(
-       res => {
+      
+     res => {
+      this.isAdded = true; 
          console.log(res)
        }
      )

@@ -1,0 +1,32 @@
+<a routerLink="/home">Back</a>
+
+<h3>Update Orders</h3>
+<form id ="formNewOrder" name="formNewOrder" #orderData = "ngForm" (ngSubmit)="updateOrder(orderData.value)">
+<div class="from-group">
+  <label>orderno: </label>
+  <input type="text" name="orderno" [(ngModel)]= data.orderno ngModel class="form-control" required>
+</div>
+<div class="from-group">
+  <label>orderduedate: </label>
+  <input type="text" name="orderduedate" [(ngModel)]= data.orderduedate ngModel class="form-control" required> 
+</div>
+<div class="from-group">
+  <label>customername: </label>
+  <input type="text" name="customername" [(ngModel)]= data.customername ngModel class="form-control" required>
+</div>
+  <div class="from-group">
+  <label>customeraddress: </label>
+  <input type="text" name="customeraddress" [(ngModel)]= data.customeraddress ngModel class="form-control" required>
+</div>
+  <div class="from-group">
+  <label>customerphone: </label>
+  <input type="text" name="customerphone" [(ngModel)]= data.customerphone ngModel class="form-control" required>
+</div>
+  <div class="from-group">
+  <label>ordertotal: </label>
+  <input type="text" name="ordertotal" [(ngModel)]= data.ordertotal ngModel class="form-control" required>
+</div>
+ <button type="submit"  class="btn btn-primary">UpdateOrder</button>
+
+</form>
+

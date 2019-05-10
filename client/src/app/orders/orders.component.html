@@ -2,19 +2,39 @@
 
 <h3>Add Orders</h3>
 <form id ="formNewOrder" name="formNewOrder" #orderData = "ngForm" (ngSubmit)="addNewOrder(orderData.value)">
-
-  <label>orderno</label>
-  <input type="text" name="orderno" ngModel><br>
-  <label>orderduedate</label>
-  <input type="text" name="orderduedate" ngModel><br>
-  <label>customername</label>
-  <input type="text" name="customername" ngModel><br>
-  <label>customeraddress</label>
-  <input type="text" name="customeraddress" ngModel><br>
-  <label>customerphone</label>
-  <input type="text" name="customerphone" ngModel><br>
-  <label>ordertotal</label>
-  <input type="text" name="ordertotal" ngModel><br>
- <input type="submit" value="Add Order">
+<div class="from-group">
+  <label>orderno: </label>
+  <input type="text" name="orderno" ngModel class="form-control" required>
+</div>
+<div class="from-group">
+  <label>orderduedate: </label>
+  <input type="text" name="orderduedate" ngModel class="form-control" required> 
+</div>
+<div class="from-group">
+  <label>customername: </label>
+  <input type="text" name="customername" ngModel class="form-control" required>
+</div>
+  <div class="from-group">
+  <label>customeraddress: </label>
+  <input type="text" name="customeraddress" ngModel class="form-control" required>
+</div>
+  <div class="from-group">
+  <label>customerphone: </label>
+  <input type="text" name="customerphone" ngModel class="form-control" required>
+</div>
+  <div class="from-group">
+  <label>ordertotal: </label>
+  <input type="text" name="ordertotal" ngModel class="form-control" required>
+</div>
+ <button type="submit" [disabled]="orderData. invalid" class="btn btn-primary">Add Order</button>
 
 </form>
+
+<br>
+<h3 *ngIf = "isAdded">{{confirmationString}}</h3>
+
+
+
+ 
+
+
