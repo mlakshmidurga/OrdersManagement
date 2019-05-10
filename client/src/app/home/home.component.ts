@@ -36,9 +36,6 @@ deleteOrder(id){
 }
 
 
-updateOrder(id){
-
-}
   ngOnInit() {
     this.fetchdata()
     
