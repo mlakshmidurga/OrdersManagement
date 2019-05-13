@@ -28,6 +28,7 @@ export class OrdersComponent implements OnInit {
       
      res => {
       this.isAdded = true; 
+     
          console.log(res)
        }
      )

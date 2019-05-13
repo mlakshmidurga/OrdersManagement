@@ -17,8 +17,9 @@ private headers = new HttpHeaders({'Content-Type': 'application/json'});
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
 
-  updateOrder(order){
+  updateOrder( order){
     this.orderObj = {
+      "id":order.id,
       "orderno": order.orderno,
       "orderduedate": order.orderduedate,
       "customername":order.customername,

@@ -70,12 +70,12 @@
     <td>{{order.customeraddress}}</td>
     <td>{{order.customerphone}}</td>
     <td>{{order.ordertotal}}</td>
-    <td [routerLink] = "['/updateOrder', order.id]"><a data-toggle="modal" data-target="#update">Edit</a></td>
+    <td ><button type="button" class="btn btn-default" data-toggle="modal" data-target="#update" (click)="updateOrder(order)">Edit</button></td>
     <td (click) ="deleteOrder(order.id)"><a>Delete</a></td>
   </tr>
 </table>
 
-<!-- <div class="modal fade" id="update" role="dialog">
+ <div class="modal fade" id="update" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -117,4 +117,4 @@
       </div>
     </div>
   </div>
-</div> -->
+</div> 
