@@ -30,7 +30,7 @@ private headers = new HttpHeaders({'Content-Type': 'application/json'});
     }
     const url ="http://localhost:4300/orders/" + this.id;
     this.http.put(url, JSON.stringify(this.orderObj), {headers: this.headers}).toPromise().then(()=>{
-this.router.navigate(['/']);
+this.router.navigate(['/home']);
     })
   }
   ngOnInit() {

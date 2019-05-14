@@ -1,53 +1,10 @@
 
   <!-- <a routerLink="/orders" style="float:right">+ Add Orders</a> -->
 
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">+ Add Orders</button>
+  <button type="button" [routerLink]="['/orders']" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">+ Add Orders</button>
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-          <h4 class="modal-title">Add Orders</h4>
-        </div>
-        <div class="modal-body">
-          <form id ="formNewOrder" name="formNewOrder" #orderData = "ngForm" (ngSubmit)="addNewOrder(orderData.value)">
-            <div class="from-group">
-              <label>orderno: </label>
-              <input type="text" name="orderno" ngModel class="form-control" required>
-            </div>
-            <div class="from-group">
-              <label>orderduedate: </label>
-              <input type="text" name="orderduedate" ngModel class="form-control" required> 
-            </div>
-            <div class="from-group">
-              <label>customername: </label>
-              <input type="text" name="customername" ngModel class="form-control" required>
-            </div>
-              <div class="from-group">
-              <label>customeraddress: </label>
-              <input type="text" name="customeraddress" ngModel class="form-control" required>
-            </div>
-              <div class="from-group">
-              <label>customerphone: </label>
-              <input type="text" name="customerphone" ngModel class="form-control" required>
-            </div>
-              <div class="from-group">
-              <label>ordertotal: </label>
-              <input type="text" name="ordertotal" ngModel class="form-control" required>
-            </div>
-            <br>
-             <button type="submit" [disabled]="orderData. invalid" class="btn btn-primary">Add Order</button>
-            
-            </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  
   
 
 <table>
@@ -70,12 +27,12 @@
     <td>{{order.customeraddress}}</td>
     <td>{{order.customerphone}}</td>
     <td>{{order.ordertotal}}</td>
-    <td ><button type="button" class="btn btn-default" data-toggle="modal" data-target="#update" (click)="updateOrder(order)">Edit</button></td>
+    <td [routerLink]="['/updateOrder', order.id]"><a data-toggle="modal" data-target="#update" >Edit</a></td>
     <td (click) ="deleteOrder(order.id)"><a>Delete</a></td>
   </tr>
 </table>
 
- <div class="modal fade" id="update" role="dialog">
+ <!-- <div class="modal fade" id="update" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -117,4 +74,4 @@
       </div>
     </div>
   </div>
-</div> 
+</div>  -->

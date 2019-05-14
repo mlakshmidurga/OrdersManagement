@@ -1,4 +1,4 @@
-<a routerLink="/home">Back</a>
+<!-- <a routerLink="/home">Back</a>
 
 <h3>Add Orders</h3>
 <form id ="formNewOrder" name="formNewOrder" #orderData = "ngForm" (ngSubmit)="addNewOrder(orderData.value)">
@@ -31,10 +31,53 @@
 </form>
 
 <br>
-<h3 *ngIf = "isAdded">{{confirmationString}}</h3>
+<h3 *ngIf = "isAdded">{{confirmationString}}</h3> -->
 
 
 
  
 
-
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        <h4 class="modal-title">Add Orders</h4>
+      </div>
+      <div class="modal-body">
+        <form id ="formNewOrder" name="formNewOrder" #orderData = "ngForm" (ngSubmit)="addNewOrder(orderData.value)">
+          <div class="from-group">
+            <label>orderno: </label>
+            <input type="text" name="orderno" ngModel class="form-control" required>
+          </div>
+          <div class="from-group">
+            <label>orderduedate: </label>
+            <input type="text" name="orderduedate" ngModel class="form-control" required> 
+          </div>
+          <div class="from-group">
+            <label>customername: </label>
+            <input type="text" name="customername" ngModel class="form-control" required>
+          </div>
+            <div class="from-group">
+            <label>customeraddress: </label>
+            <input type="text" name="customeraddress" ngModel class="form-control" required>
+          </div>
+            <div class="from-group">
+            <label>customerphone: </label>
+            <input type="text" name="customerphone" ngModel class="form-control" required>
+          </div>
+            <div class="from-group">
+            <label>ordertotal: </label>
+            <input type="text" name="ordertotal" ngModel class="form-control" required>
+          </div>
+          <br>
+           <button type="submit"  class="btn btn-primary" >Add Order</button>
+          
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

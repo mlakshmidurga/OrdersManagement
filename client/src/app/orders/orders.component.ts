@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -7,7 +9,7 @@ import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 })
 export class OrdersComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router,) { }
 
    orderObj: object = [];
   confirmationString: string = 'New Order has been Added';
@@ -28,7 +30,7 @@ export class OrdersComponent implements OnInit {
       
      res => {
       this.isAdded = true; 
-     
+     this.router.navigate(['/home'])
          console.log(res)
        }
      )

@@ -11,7 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router,) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router) { }
 
 id:number;
 private headers = new HttpHeaders({'Content-Type': 'application/json'});
@@ -34,6 +34,7 @@ orderObj:object = {};
       
      res => {
       this.isAdded = true; 
+      this.fetchdata()
       this.router.navigate(['/home'])
          console.log(res)
        }
@@ -67,7 +68,9 @@ updateOrder( order){
 this.router.navigate(['/']);
   })
 }
-
+// goToEdit(id){
+//   this.router.navigate(['updateOrder/' + id]);
+// }
 deleteOrder(id){
   if(confirm('Are You Sure?')){
     const url ="http://localhost:4300/orders/" + id;
@@ -81,24 +84,24 @@ deleteOrder(id){
 
   ngOnInit() {
     this.fetchdata()
-    this.route.params.subscribe(params =>{
-      this.id = +params['id'];
-    })
+  //   this.route.params.subscribe(params =>{
+  //     this.id = +params['id'];
+  //   })
 
-    this.http.get('http://localhost:4300/orders').subscribe(
-    (res)=>{
-      this.orders = res;
-      console.log(this.orders);
-      for(var i = 0; i < this.orders.length; i++){
-        if(parseInt(this.orders[i].id) === this.id){
-          this.data= this.orders[i];
-          console.log(this.data)
-          break;
-        }
-      }
-    },
-    err=>{console.log(err)}
-  )
+  //   this.http.get('http://localhost:4300/orders').subscribe(
+  //   (res)=>{
+  //     this.orders = res;
+  //     console.log(this.orders);
+  //     for(var i = 0; i < this.orders.length; i++){
+  //       if(parseInt(this.orders[i].id) === this.id){
+  //         this.data= this.orders[i];
+  //         console.log(this.data)
+  //         break;
+  //       }
+  //     }
+  //   },
+  //   err=>{console.log(err)}
+  // )
   }
 
 }
