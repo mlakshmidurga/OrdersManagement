@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+ import { Router } from '@angular/router';
+import { StateService } from '@uirouter/core';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   registerUserData = {}
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private StateService: StateService) { }
 
   onRegister(form: NgForm){
     if(form.invalid){
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
    else{
     this.auth.registerUser(this.registerUserData).subscribe(
       res =>{
-      this.router.navigate(['/orders']);
+      // this.router.navigate(['/orders']);
         console.log(res)},
         err =>{
         console.log(err)

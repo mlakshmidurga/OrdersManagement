@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { RootModule } from '@uirouter/angular';
+import {UIRouter} from "@uirouter/angular";
 import {ActivatedRoute} from '@angular/router';
+import { StateService } from '@uirouter/angular';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.component.html',
@@ -9,7 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class OrdersComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router,) { }
+  constructor(private http: HttpClient,private StateService: StateService,) { }
 
    orderObj: object = [];
   confirmationString: string = 'New Order has been Added';
@@ -30,7 +32,8 @@ export class OrdersComponent implements OnInit {
       
      res => {
       this.isAdded = true; 
-     this.router.navigate(['/home'])
+    this.StateService.go('home');
+    //  this.uiRoute.navigate(['/home'])
          console.log(res)
        }
      )

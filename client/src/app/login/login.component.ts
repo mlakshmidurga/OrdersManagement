@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+ import { Router } from '@angular/router';
 import {NgForm } from '@angular/forms';
-
+import { StateService } from '@uirouter/angular';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +13,7 @@ loginUserData = {}
 
 
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private StateService: StateService) { }
 
   onLogin(form: NgForm){
     if(form.invalid){
@@ -22,7 +22,7 @@ loginUserData = {}
   else{
     this.auth.loginUser(this.loginUserData).subscribe(
       res => {
-        this.router.navigate(['/orders']);
+        this.StateService.go('orders');
         console.log(res)},
       err => console.log(err)
     )

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import { Router } from '@angular/router';
-import {ActivatedRoute} from '@angular/router';
-
+// import {ActivatedRoute} from '@angular/router';
+import { StateService } from '@uirouter/angular';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,7 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private http: HttpClient, private route: ActivatedRoute,private router: Router) { }
+  constructor(private http: HttpClient, private StateService: StateService) { }
 
 id:number;
 private headers = new HttpHeaders({'Content-Type': 'application/json'});
@@ -35,7 +35,7 @@ orderObj:object = {};
      res => {
       this.isAdded = true; 
       this.fetchdata()
-      this.router.navigate(['/home'])
+      this.StateService.go('home')
          console.log(res)
        }
      )
@@ -65,7 +65,7 @@ updateOrder( order){
   const url ="http://localhost:4300/orders/" + this.id;
   
   this.http.put(url, JSON.stringify(this.orderObj), {headers: this.headers}).toPromise().then(()=>{
-this.router.navigate(['/']);
+this.StateService.go('home');
   })
 }
 // goToEdit(id){
