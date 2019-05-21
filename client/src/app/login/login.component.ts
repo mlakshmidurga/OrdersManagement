@@ -22,7 +22,7 @@ loginUserData = {}
   else{
     this.auth.loginUser(this.loginUserData).subscribe(
       res => {
-        this.StateService.go('orders');
+        this.StateService.go('home');
         console.log(res)},
       err => console.log(err)
     )

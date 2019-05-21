@@ -7,7 +7,8 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a  uiSref="orders" uiSrefActive="active">orders </a>
+          <a class="nav-link"  routerLink="/orders" routerLinkActivate="active">Orders</a> 
+        <!-- <a  uiSref="orders" uiSrefActive="active">orders </a> -->
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link" routerLink="/special" routerLinkActivate="active">Members</a>
@@ -15,13 +16,13 @@
     </ul>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <!-- <a class="nav-link"  routerLink="/login" routerLinkActivate="active">Login</a> -->
-        <a   uiSref="login" uiSrefActive="active">Login</a>
+         <a class="nav-link"  routerLink="/login" routerLinkActivate="active">Login</a> 
+        <!-- <a   uiSref="login" uiSrefActive="active">Login</a> -->
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item"> -->
         <!-- <a class="nav-link"  routerLink="/register" routerLinkActivate="active">Register</a> -->
-        <a  uiSref="register" uiSrefActive="active">register</a>
-      </li>
+        <!-- <a  uiSref="register" uiSrefActive="active">register</a> -->
+      <!-- </li> -->
       <!-- <li class="nav-item">
         <a class="nav-link" *ngIf = "authService.loggedIn()" style="cursor:pointer" (click)="authService.logoutUser()">Logout{{user}}</a>
       </li> -->
@@ -30,6 +31,6 @@
 </nav>
 
 <div class="container">
- <!-- <router-outlet></router-outlet> -->
- <ui-view></ui-view>
+  <router-outlet></router-outlet>
+ <!-- <ui-view></ui-view> -->
 </div>

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import { Router } from '@angular/router';
-// import {ActivatedRoute} from '@angular/router';
-import { StateService } from '@uirouter/angular';
+ import {ActivatedRoute} from '@angular/router';
+// import { StateService } from '@uirouter/angular';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,11 +11,11 @@ import { StateService } from '@uirouter/angular';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private http: HttpClient, private StateService: StateService) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
 id:number;
 private headers = new HttpHeaders({'Content-Type': 'application/json'});
-orderObj:object = {};
+  orderObj:object = {};
   confirmationString: string = 'New Order has been Added';
   isAdded: boolean = false;
   data:object = {};
@@ -35,7 +35,8 @@ orderObj:object = {};
      res => {
       this.isAdded = true; 
       this.fetchdata()
-      this.StateService.go('home')
+      // this.StateService.go('home')
+      window.location.reload();
          console.log(res)
        }
      )
@@ -65,7 +66,9 @@ updateOrder( order){
   const url ="http://localhost:4300/orders/" + this.id;
   
   this.http.put(url, JSON.stringify(this.orderObj), {headers: this.headers}).toPromise().then(()=>{
-this.StateService.go('home');
+    this.router.navigate(['/home'])
+    window.location.reload();
+// this.StateService.go('home');
   })
 }
 // goToEdit(id){
@@ -84,24 +87,24 @@ deleteOrder(id){
 
   ngOnInit() {
     this.fetchdata()
-  //   this.route.params.subscribe(params =>{
-  //     this.id = +params['id'];
-  //   })
+    this.route.params.subscribe(params =>{
+      this.id = +params['id'];
+    })
 
-  //   this.http.get('http://localhost:4300/orders').subscribe(
-  //   (res)=>{
-  //     this.orders = res;
-  //     console.log(this.orders);
-  //     for(var i = 0; i < this.orders.length; i++){
-  //       if(parseInt(this.orders[i].id) === this.id){
-  //         this.data= this.orders[i];
-  //         console.log(this.data)
-  //         break;
-  //       }
-  //     }
-  //   },
-  //   err=>{console.log(err)}
-  // )
+    this.http.get('http://localhost:4300/orders').subscribe(
+    (res)=>{
+      this.orders = res;
+      console.log(this.orders);
+      for(var i = 0; i < this.orders.length; i++){
+        if(parseInt(this.orders[i].id) === this.id){
+          this.data= this.orders[i];
+          console.log(this.data)
+          break;
+        }
+      }
+    },
+    err=>{console.log(err)}
+  )
   }
 
 }

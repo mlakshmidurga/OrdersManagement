@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
-import { StateService } from '@uirouter/angular';
+// import { StateService } from '@uirouter/angular';
 @Component({
   selector: 'app-update-order',
   templateUrl: './update-order.component.html',
@@ -13,14 +13,14 @@ id: number;
 data: object = {};
 orders;
 orderObj:object = {}
-
 private headers = new HttpHeaders({'Content-Type': 'application/json'});
-  constructor(private StateService: StateService,  private http: HttpClient) { }
+  constructor(  private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
 
   updateOrder( order){
+   
     this.orderObj = {
-      "id":order.id,
+     "orderid": order.id,
       "orderno": order.orderno,
       "orderduedate": order.orderduedate,
       "customername":order.customername,
@@ -31,12 +31,14 @@ private headers = new HttpHeaders({'Content-Type': 'application/json'});
     }
     const url ="http://localhost:4300/orders/" + this.id;
     this.http.put(url, JSON.stringify(this.orderObj), {headers: this.headers}).toPromise().then(()=>{
-this.StateService.go('home');
+    // this.StateService.go('home');
+     this.router.navigate(['/home'])
+     window.close();
     })
   }
   ngOnInit() {
 
-    this.StateService.params.subscribe(params =>{
+    this.route.params.subscribe(params =>{
       this.id = +params['id'];
     })
 

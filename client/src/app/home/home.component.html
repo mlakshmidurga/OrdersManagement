@@ -1,7 +1,7 @@
 
-  <!-- <a routerLink="/orders" style="float:right">+ Add Orders</a> -->
-
-  <button type="button" uiSref="orders" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">+ Add Orders</button>
+   <!-- <a routerLink="/orders" style="float:right" data-toggle="modal" data-target="#myModal">+ Add Orders</a>  -->
+ <button type="button" routerLink="/orders" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">+ Add Orders</button>
+  <!-- <button type="button" uiSref="orders" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">+ Add Orders</button> -->
 
   <!-- Modal -->
   
@@ -27,13 +27,13 @@
     <td>{{order.customeraddress}}</td>
     <td>{{order.customerphone}}</td>
     <td>{{order.ordertotal}}</td>
-   
-    <td ><a uiSref="updateOrder" [uiParams]="{orderid: order.id}" data-toggle="modal" data-target="#update" >Edit</a></td>
+    <td [routerLink]= "['/updateorder', order.id]"><a  data-toggle="modal" data-target="#update" >Edit</a></td>
+    <!-- <td ><a uiSref="updateOrder" [uiParams]="{orderId: order.id}" data-toggle="modal" data-target="#update" >Edit</a></td> -->
     <td (click) ="deleteOrder(order.id)"><a>Delete</a></td>
   </tr>
 </table>
 
- <!-- <div class="modal fade" id="update" role="dialog">
+ <div class="modal fade" id="update" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -75,4 +75,4 @@
       </div>
     </div>
   </div>
-</div>  -->
+</div>  
