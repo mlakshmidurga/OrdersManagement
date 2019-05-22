@@ -18,6 +18,8 @@ const router: Routes =[
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 
 ]
+
+// Ui Router Routing
 // const rootModule: RootModule = {
 //   states: [
 //     {
@@ -39,7 +41,6 @@ const router: Routes =[
 //   ],
 //   useHash: true,
 //   otherwise: "/login"
-  
 // }
 
 @NgModule({

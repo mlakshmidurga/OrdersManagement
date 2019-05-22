@@ -1,43 +1,37 @@
-
-   <!-- <a routerLink="/orders" style="float:right" data-toggle="modal" data-target="#myModal">+ Add Orders</a>  -->
- <button type="button" routerLink="/orders" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">+ Add Orders</button>
-  <!-- <button type="button" uiSref="orders" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">+ Add Orders</button> -->
-
-  <!-- Modal -->
-  
-  
-
-<table>
-  <th>id</th>
-  <th>orderno</th>
-  <th>orderduedate</th>
-  <th>customername</th>
-  <th>customeraddress</th>
-  <th>customerphone</th>
-  <th>ordertotal</th>
-  <th></th>
-  <th></th>
-    
-
-  <tr *ngFor = "let order of orders">
-    <td>{{order.id}}</td>
-    <td>{{order.orderno}}</td>
-    <td>{{order.orderduedate}}</td>
-    <td>{{order.customername}}</td>
-    <td>{{order.customeraddress}}</td>
-    <td>{{order.customerphone}}</td>
-    <td>{{order.ordertotal}}</td>
-    <td [routerLink]= "['/updateorder', order.id]"><a  data-toggle="modal" data-target="#update" >Edit</a></td>
-    <!-- <td ><a uiSref="updateOrder" [uiParams]="{orderId: order.id}" data-toggle="modal" data-target="#update" >Edit</a></td> -->
-    <td (click) ="deleteOrder(order.id)"><a>Delete</a></td>
-  </tr>
-</table>
+<!-- <a routerLink="/orders" style="float:right" data-toggle="modal" data-target="#myModal">+ Add Orders</a>  -->
+<a><button type="button" routerLink="/orders" style="float:right; margin-bottom:10px; margin-top:10px;margin-right:50px;" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">+ Add Orders</button></a>
+<!-- using ui Router-->
+<!-- <button type="button" uiSref="orders" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">+ Add Orders</button> -->
+<div class="container">
+  <table>
+    <th>id</th>
+    <th>orderno</th>
+    <th>orderduedate</th>
+    <th>customername</th>
+    <th>customeraddress</th>
+    <th>customerphone</th>
+    <th>ordertotal</th>
+    <th>Update</th>
+    <th>Delete</th>
+    <tr *ngFor = "let order of orders">
+      <td>{{order.id}}</td>
+      <td>{{order.orderno}}</td>
+      <td>{{order.orderduedate}}</td>
+      <td>{{order.customername}}</td>
+      <td>{{order.customeraddress}}</td>
+      <td>{{order.customerphone}}</td>
+      <td>{{order.ordertotal}}</td>
+      <td [routerLink]= "['/updateorder', order.id]"><button type="button" class="btn btn-info btn-sm"><a  data-toggle="modal" data-target="#update" >Edit</a></button></td>
+      <!-- <td ><a uiSref="updateOrder" [uiParams]="{orderId: order.id}" data-toggle="modal" data-target="#update" >Edit</a></td> -->
+      <td (click) ="deleteOrder(order.id)"><button type="button" class="btn btn-danger btn-sm"><a>Delete</a></button></td>
+    </tr>
+  </table>
+</div>
 
  <div class="modal fade" id="update" role="dialog">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
-       
         <h4 class="modal-title">Update Orders</h4>
       </div>
       <div class="modal-body">
@@ -67,8 +61,7 @@
             <input type="text" name="ordertotal" [(ngModel)]= data.ordertotal ngModel class="form-control" required>
           </div>
            <button type="submit"  class="btn btn-primary">UpdateOrder</button>
-          
-          </form>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -13,7 +13,7 @@ loginUserData = {}
 
 
 
-  constructor(private auth: AuthService, private StateService: StateService) { }
+  constructor(private auth: AuthService, private router:Router) { }
 
   onLogin(form: NgForm){
     if(form.invalid){
@@ -22,7 +22,7 @@ loginUserData = {}
   else{
     this.auth.loginUser(this.loginUserData).subscribe(
       res => {
-        this.StateService.go('home');
+        this.router.navigate(['/home']);
         console.log(res)},
       err => console.log(err)
     )
