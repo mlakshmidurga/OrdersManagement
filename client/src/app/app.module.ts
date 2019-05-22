@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -10,6 +11,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { AuthService } from './auth.service';
 import { HomeComponent } from './home/home.component';
 import { UpdateOrderComponent } from './update-order/update-order.component';
+import { MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, MatCardModule, MatToolbarModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,9 @@ import { UpdateOrderComponent } from './update-order/update-order.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatInputModule, MatButtonModule, MatSelectModule, MatIconModule,
+    MatCardModule,MatToolbarModule, 
     FormsModule,
     HttpClientModule,
     AppRoutingModule

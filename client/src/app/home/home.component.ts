@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import { Router } from '@angular/router';
  import {ActivatedRoute} from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 // import { StateService } from '@uirouter/angular';
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) { }
   id:number;
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
   orderObj:object = {};
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
   isAdded: boolean = false;
   data:object = {};
   orders;
-
+  fileUrl;
   // Fetch The Data
   fetchdata(){
     this.http.get('http://localhost:4300/orders').subscribe(
@@ -44,7 +45,7 @@ export class HomeComponent implements OnInit {
     const url ="http://localhost:4300/orders/" + this.id;
     this.http.put(url, JSON.stringify(this.orderObj), {headers: this.headers}).toPromise().then(()=>{
       this.router.navigate(['/home'])
-      window.location.reload();
+      
     // this.StateService.go('home');
     })
   }
@@ -60,7 +61,13 @@ export class HomeComponent implements OnInit {
 
   }
 
+ 
   ngOnInit() {
+
+    // const data = 'http://localhost:4300/orders';
+    // const blob = new Blob([data], { type: 'text/csv' });
+
+    // this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
     this.fetchdata()
     this.route.params.subscribe(params =>{
       this.id = +params['id'];

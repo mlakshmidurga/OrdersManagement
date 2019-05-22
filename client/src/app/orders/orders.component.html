@@ -6,7 +6,7 @@
         <h4 class="modal-title">Add Orders</h4>
       </div>
       <div class="modal-body">
-        <form id ="formNewOrder" name="formNewOrder" #orderData = "ngForm" (ngSubmit)="addNewOrder(orderData.value)">
+        <form id ="formNewOrder" name="formNewOrder" #orderData = "ngForm" >
           <div class="from-group">
             <label>orderno: </label>
             <input type="text" name="orderno" ngModel class="form-control" required>
@@ -32,7 +32,7 @@
             <input type="text" name="ordertotal" ngModel class="form-control" required>
           </div>
           <br>
-          <button type="submit"  class="btn btn-primary" >Add Order</button>
+          <button type="button" data-dismiss="modal" (click)="addNewOrder(orderData.value)" class="btn btn-primary" >Add Order</button>
         </form>
       </div>
       <div class="modal-footer">

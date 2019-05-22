@@ -31,10 +31,10 @@ export class OrdersComponent implements OnInit {
       this.isAdded = true; 
       // this.StateService.go('home');
       this.router.navigate(['/home'])
-      window.location.reload();
     }
     )
   }
   ngOnInit() {
   }
+  
 }

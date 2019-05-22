@@ -32,10 +32,12 @@
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">X</button>
         <h4 class="modal-title">Update Orders</h4>
       </div>
+      <form id ="formNewOrder" name="formNewOrder" #orderData = "ngForm" >
       <div class="modal-body">
-        <form id ="formNewOrder" name="formNewOrder" #orderData = "ngForm" (ngSubmit)="updateOrder(orderData.value)">
+        
           <div class="from-group">
             <label>orderno: </label>
             <input type="text" name="orderno" [(ngModel)]= data.orderno ngModel class="form-control" required>
@@ -60,12 +62,18 @@
             <label>ordertotal: </label>
             <input type="text" name="ordertotal" [(ngModel)]= data.ordertotal ngModel class="form-control" required>
           </div>
-           <button type="submit"  class="btn btn-primary">UpdateOrder</button>
-        </form>
+          
+        
       </div>
+    
       <div class="modal-footer">
+          <button type="button" data-dismiss="modal" (click)="updateOrder(orderData.value)" class="btn btn-primary">UpdateOrder</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
+    </form>
     </div>
   </div>
 </div>  
+
+
+<!-- <a [href]="fileUrl" download="file.csv">DownloadFile</a> -->
