@@ -15,7 +15,7 @@ const router: Routes =[
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'orders', component: OrdersComponent},
-  {path: '', redirectTo: '/home', pathMatch: 'full'}
+  {path: '', redirectTo: '/login', pathMatch: 'full'}
 
 ]
 

@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   data:object = {};
   orders;
   fileUrl;
+
+  displayedColumns: string[] = ['id', 'orderid', 'orderduedate', 'customername', 'customeraddress', 'customerphone', 'ordertotal'];
   // Fetch The Data
   fetchdata(){
     this.http.get('http://localhost:4300/orders').subscribe(

@@ -15,10 +15,10 @@ input{
 }
 a{
     font-size:25px;
-    color:red;
+   
 }
 
 a:hover{
     cursor: pointer;
-    color:red;
+    
 }
