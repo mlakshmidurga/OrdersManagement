@@ -6,9 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-order.component.css']
 })
 export class UpdateOrderComponent implements OnInit {
-
-  constructor( ) { }
   
+constructor() { }
   ngOnInit() {
   }
 }

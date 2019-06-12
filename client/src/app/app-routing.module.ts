@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
- import { Routes, RouterModule } from '@angular/router';
+ import { Routes, RouterModule, PreloadingStrategy } from '@angular/router';
 // import {RootModule, UIRouterModule} from '@uirouter/angular';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -10,7 +10,7 @@ import { UpdateOrderComponent } from './update-order/update-order.component';
 
 const router: Routes =[
 
-  {path: 'updateorder/:id', component: UpdateOrderComponent},
+  // {path: 'updateorder/:id', component: UpdateOrderComponent},
   {path: 'home', component: HomeComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},

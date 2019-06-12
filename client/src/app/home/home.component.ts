@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import { Router } from '@angular/router';
- import {ActivatedRoute} from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
+import {ActivatedRoute} from '@angular/router';
+import { NgForm } from '@angular/forms';
+
 // import { StateService } from '@uirouter/angular';
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
   id:number;
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
   orderObj:object = {};
@@ -19,9 +20,7 @@ export class HomeComponent implements OnInit {
   isAdded: boolean = false;
   data:object = {};
   orders;
-  fileUrl;
-
-  displayedColumns: string[] = ['id', 'orderid', 'orderduedate', 'customername', 'customeraddress', 'customerphone', 'ordertotal'];
+  
   // Fetch The Data
   fetchdata(){
     this.http.get('http://localhost:4300/orders').subscribe(
@@ -32,8 +31,12 @@ export class HomeComponent implements OnInit {
     )
   }
 
+getOrder(id){
+  this.data = this.orders.filter(x => x.id === id)[0]
+}
+
   // Update Orders
-  updateOrder( order){
+  updateOrder(order){
     this.orderObj = {
       "id":order.id,
       "orderno": order.orderno,
@@ -47,8 +50,6 @@ export class HomeComponent implements OnInit {
     const url ="http://localhost:4300/orders/" + this.id;
     this.http.put(url, JSON.stringify(this.orderObj), {headers: this.headers}).toPromise().then(()=>{
       this.router.navigate(['/home'])
-      
-    // this.StateService.go('home');
     })
   }
 
@@ -60,16 +61,18 @@ export class HomeComponent implements OnInit {
         this.fetchdata();
       })
     }
-
   }
 
+// form reset
+  resetForm(form?: NgForm){
+    if(form){
+    form.resetForm();
+    this.orderObj = {}; 
+    this.fetchdata()
+  }
+}
  
   ngOnInit() {
-
-    // const data = 'http://localhost:4300/orders';
-    // const blob = new Blob([data], { type: 'text/csv' });
-
-    // this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
     this.fetchdata()
     this.route.params.subscribe(params =>{
       this.id = +params['id'];
@@ -78,13 +81,6 @@ export class HomeComponent implements OnInit {
     (res)=>{
       this.orders = res;
       console.log(this.orders);
-      for(var i = 0; i < this.orders.length; i++){
-        if(parseInt(this.orders[i].id) === this.id){
-          this.data= this.orders[i];
-          console.log(this.data)
-          break;
-        }
-      }
     },
     err=>{console.log(err)}
     )
